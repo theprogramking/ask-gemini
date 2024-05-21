@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Ignore .replit and replit.nix files
+.replit
+replit.nix
+
+# Other files and directories to ignore
+node_modules/
+dist/
+*.log
