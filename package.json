@@ -1,16 +1,25 @@
 {
-  "name": "nodejs",
-  "version": "1.0.0",
-  "description": "",
+  "name": "ask-gemini",
+  "version": "2.0.1",
+  "description": "Lightweight NPM package to ask Gemini to do anything",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Luke Shimkus",
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.11.3",
     "@types/node": "^18.0.6"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theprogramking/ask-gemini.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theprogramking/ask-gemini/issues"
+  },
+  "homepage": "https://github.com/theprogramking/ask-gemini#readme"
 }
