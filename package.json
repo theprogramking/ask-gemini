@@ -1,14 +1,18 @@
 {
   "name": "ask-gemini",
-  "version": "2.0.2",
-  "description": "Lightweight NPM package to ask Gemini to do anything",
+  "version": "2.0.4",
+  "description": "Lightweight package to easily interact with Google's Generative AI (Gemini).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "gemini",
+    "ai",
+    "lightweight"
+  ],
   "author": "Luke Shimkus",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@google/generative-ai": "^0.11.3",
     "@types/node": "^18.0.6"
