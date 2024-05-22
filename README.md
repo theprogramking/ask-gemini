@@ -47,7 +47,7 @@ Sends a prompt to the AI and returns the response.
 - **Returns:**
   - A promise that resolves to the AI's response.
 
-### Passing images to Gemini 
+## Using Images 
 Below is an example if you wanted to add images to your prompt:
 ```javascript
 const { setGeminiApiKey, askGemini } = require('ask-gemini');
