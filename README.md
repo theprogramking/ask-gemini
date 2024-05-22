@@ -48,4 +48,4 @@ Sends a prompt to the AI and returns the response.
 
 ## License
 
-This package is licensed under the MIT License. See the LICENSE file for details.
+This package is licensed under the ISC License. See the LICENSE file for details.
