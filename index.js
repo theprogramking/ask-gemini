@@ -2,11 +2,11 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 let genAI;
 
-function setApiKey(apiKey) {
+function setGeminiApiKey(apiKey) {
   genAI = new GoogleGenerativeAI(apiKey);
 }
 
-async function askAI(prompt) {
+async function askGemini(prompt) {
   if (!genAI) {
     throw new Error('API key is not set. Use setApiKey() to set it.');
   }
@@ -22,4 +22,4 @@ async function askAI(prompt) {
   }
 }
 
-module.exports = { setApiKey, askAI };
+module.exports = { setGeminiApiKey, askGemini };
