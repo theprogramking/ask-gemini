@@ -1,25 +1,64 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
-
+const fs = require('fs');
 let genAI;
 
+// FUNCTION TO SET API KEY
 function setGeminiApiKey(apiKey) {
   genAI = new GoogleGenerativeAI(apiKey);
 }
 
-async function askGemini(prompt) {
+// HELPER FUNCTION
+function fileToGenerativePart(path, mimeType) {
+  return {
+      inlineData: {
+          data: Buffer.from(fs.readFileSync(path)).toString("base64"),
+          mimeType
+      },
+  };
+}
+
+// MAIN
+async function askGemini(prompt, images) {
+
+  // DETERMINE MODEL TYPE
+  const modelType = images ? 'gemini-pro-vision' : 'gemini-pro';
+
+  // THROW ERROR IF THEY DID NOT SET API KEY
   if (!genAI) {
-    throw new Error('API key is not set. Use setApiKey() to set it.');
+      throw new Error('API key is not set. Use setGeminiApiKey() to set it.');
   }
 
-  if (prompt) {
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-    const result = await model.generateContent(prompt);
-    const response = result.response;
-    const text = response.text();
-    return text;
-  } else {
-    console.log('You must enter a prompt when calling this function');
+  // IF MODEL TYPE IS TEXT BASED
+  if (modelType == "gemini-pro") {
+      const model = genAI.getGenerativeModel({
+          model: modelType
+      });
+      const result = await model.generateContent(prompt);
+      const response = result.response;
+      const text = response.text();
+      return text;
+  }
+
+  // GET IMAGES READY
+  let imageParts = [];
+  images.forEach((image) => {
+    imageParts.push(fileToGenerativePart(image.path, image.type));
+  });
+  
+  // IF MODEL TYPE IS IMAGE AND TEXT BASED
+  if (modelType == "gemini-pro-vision") {
+      const model = genAI.getGenerativeModel({
+          model: modelType
+      });
+      const result = await model.generateContent([prompt, ...imageParts]);
+      const response = result.response;
+      const text = response.text();
+      return text;
   }
 }
 
-module.exports = { setGeminiApiKey, askGemini };
+// EXPORTS
+module.exports = {
+  setGeminiApiKey,
+  askGemini
+};
