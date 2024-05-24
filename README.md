@@ -36,13 +36,14 @@ Sets the API key for the Google Generative AI service.
 - **Parameters:**
   - `apiKey` (string): Your Google Generative AI API key.
 
-#### askGemini(prompt required, imageArray optional)
+#### askGemini(prompt required, imageArray optional, modelVersion optional)
 
 Sends a prompt to the AI and returns the response.
 
 - **Parameters:**
   - `prompt` (string): The text prompt to send to the AI.
   - `imageArray` (Array): An array of objects with image file path and type.
+  - `modelVersion` (string): Selects which version to use.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
