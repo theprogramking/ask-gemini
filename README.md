@@ -48,16 +48,16 @@ Sends a prompt to the AI and returns the response.
   - A promise that resolves to the AI's response.
 
 ## Using Images 
-Below is an example if you wanted to add images to your prompt:
+Below is an example if you wanted to add images/video/audio to your prompt:
 ```javascript
 const { setGeminiApiKey, askGemini } = require('ask-gemini');
 
 setGeminiApiKey('YOUR_GOOGLE_API_KEY');
 
-// Ask Gemini AI with prompt and images
-askGemini("What is the differences between these two images?", [
-  { path: 'image1.jpg', type: 'image/jpg' },
-  { path: 'image2.png', type: 'image/png' },
+// Ask Gemini AI with prompt and video/audio
+askGemini("Can you summarize what is in this audio and what is in this picture?", [
+  { path: 'video.mp3', type: 'audio/mp3' },
+  { path: '.jpg', type: 'image/jpg' },
 ])
   .then(response => console.log(response))
   .catch(error => console.error(error));
