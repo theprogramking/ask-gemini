@@ -18,10 +18,13 @@ function fileToGenerativePart(path, mimeType) {
 }
 
 // MAIN
-async function askGemini(prompt, images) {
+async function askGemini(prompt, images, modelTypeParam) {
 
   // DETERMINE MODEL TYPE
-  const modelType = images ? 'gemini-pro-vision' : 'gemini-pro';
+  const modelType = 'gemini-1.5-flash';
+  if (modelTypeParam) {
+      modelType = modelTypeParam;
+  }
 
   // THROW ERROR IF THEY DID NOT SET API KEY
   if (!genAI) {
@@ -29,7 +32,7 @@ async function askGemini(prompt, images) {
   }
 
   // IF MODEL TYPE IS TEXT BASED
-  if (modelType == "gemini-pro") {
+  if (!images) {
       const model = genAI.getGenerativeModel({
           model: modelType
       });
@@ -39,14 +42,12 @@ async function askGemini(prompt, images) {
       return text;
   }
 
-  // GET IMAGES READY
-  let imageParts = [];
-  images.forEach((image) => {
-    imageParts.push(fileToGenerativePart(image.path, image.type));
-  });
-  
   // IF MODEL TYPE IS IMAGE AND TEXT BASED
-  if (modelType == "gemini-pro-vision") {
+  if (images) {
+      let imageParts = [];
+      images.forEach((image) => {
+          imageParts.push(fileToGenerativePart(image.path, image.type));
+      });
       const model = genAI.getGenerativeModel({
           model: modelType
       });
