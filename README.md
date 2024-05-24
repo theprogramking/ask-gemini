@@ -57,7 +57,7 @@ setGeminiApiKey('YOUR_GOOGLE_API_KEY');
 // Ask Gemini AI with prompt and video/audio
 askGemini("Can you summarize what is in this audio and what is in this picture?", [
   { path: 'video.mp3', type: 'audio/mp3' },
-  { path: '.jpg', type: 'image/jpg' },
+  { path: 'image.jpg', type: 'image/jpg' },
 ])
   .then(response => console.log(response))
   .catch(error => console.error(error));
