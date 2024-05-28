@@ -29,14 +29,14 @@ askGemini('Generate a paragraph about the history of the United States.').then(r
 ```
 ### Functions
 
-#### setGeminiApiKey(apiKey required)
+#### setGeminiApiKey(apiKey _required_)
 
 Sets the API key for the Google Generative AI service.
 
 - **Parameters:**
   - `apiKey` (string): Your Google Generative AI API key.
 
-#### askGemini(prompt required, imageArray optional, modelVersion optional)
+#### askGemini(prompt, imageArray, modelVersion)
 
 Sends a prompt to the AI and returns the response.
 
@@ -64,6 +64,45 @@ askGemini("Can you summarize what is in this audio and what is in this picture?"
   .catch(error => console.error(error));
 ```
 
+## Using Multi-Turn conversations
+
+The `askGeminiWithHistory` function prompts the Gemini AI model with a message and a history of previous interactions, enabling multi-turn conversations.
+
+```javascript
+const { setGeminiApiKey, askGeminiWithHistory } = require('ask-gemini');
+
+// Set the API key
+setGeminiApiKey('YOUR_API_KEY');
+
+// Define the conversation history
+const history = [
+  {
+    role: 'user',
+    parts: [{ text: 'Hello, I have 2 dogs in my house.' }],
+  },
+  {
+    role: 'model',
+    parts: [{ text: 'Great to meet you. What would you like to know?' }],
+  },
+];
+
+// Send a follow-up message and get the response
+askGeminiWithHistory('How many paws are in my house?', history)
+  .then(response => console.log(response))
+  .catch(error => console.error(error));
+```
+
+#### askGeminiWithHistory(prompt, historyArray, outputTokens)
+
+Sends a prompt to the AI and returns the response.
+
+- **Parameters:**
+  - `prompt` (string, _required_):  This is the new message you want to send to the AI. It should be a string containing your question or statement.
+  - `history` (Array, _optional_): An array of previous messages in the conversation. Each entry in the array should be an object with a role and parts array. The role indicates whether the message was sent by the "user" or the "model", and parts is an array where each element has a text property containing the message text.
+  - `outputTokens` (int, _optional_): Optional parameter controls the maximum length of the AI's response in tokens. By default, it is set to 100 tokens.
+
+- **Returns:**
+  - A promise that resolves to the AI's response.
 
 ## License
 

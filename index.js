@@ -1,5 +1,6 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fs = require('fs');
+
 let genAI;
 
 // FUNCTION TO SET API KEY
@@ -9,57 +10,57 @@ function setGeminiApiKey(apiKey) {
 
 // HELPER FUNCTION
 function fileToGenerativePart(path, mimeType) {
+  const data = fs.readFileSync(path).toString('base64');
   return {
-      inlineData: {
-          data: Buffer.from(fs.readFileSync(path)).toString("base64"),
-          mimeType
-      },
+    inlineData: {
+      data,
+      mimeType,
+    },
   };
 }
 
-// MAIN
-async function askGemini(prompt, images, modelTypeParam) {
-
-  // DETERMINE MODEL TYPE
-  const modelType = 'gemini-1.5-flash';
-  if (modelTypeParam) {
-      modelType = modelTypeParam;
-  }
-
-  // THROW ERROR IF THEY DID NOT SET API KEY
+// MAIN FUNCTION
+async function askGemini(prompt, images = [], modelTypeParam = 'gemini-1.5-flash') {
+  // THROW ERROR IF API KEY IS NOT SET
   if (!genAI) {
-      throw new Error('API key is not set. Use setGeminiApiKey() to set it.');
+    throw new Error('API key is not set. Use setGeminiApiKey() to set it.');
   }
 
-  // IF MODEL TYPE IS TEXT BASED
-  if (!images) {
-      const model = genAI.getGenerativeModel({
-          model: modelType
-      });
-      const result = await model.generateContent(prompt);
-      const response = result.response;
-      const text = response.text();
-      return text;
+  const modelType = modelTypeParam;
+  const model = genAI.getGenerativeModel({ model: modelType });
+
+  let input = [prompt];
+  if (images.length) {
+    input = input.concat(images.map(image => fileToGenerativePart(image.path, image.type)));
   }
 
-  // IF MODEL TYPE IS IMAGE AND TEXT BASED
-  if (images) {
-      let imageParts = [];
-      images.forEach((image) => {
-          imageParts.push(fileToGenerativePart(image.path, image.type));
-      });
-      const model = genAI.getGenerativeModel({
-          model: modelType
-      });
-      const result = await model.generateContent([prompt, ...imageParts]);
-      const response = result.response;
-      const text = response.text();
-      return text;
-  }
+  const result = await model.generateContent(input);
+  return result.response.text();
 }
+
+// FUNCTION TO HANDLE CHAT WITH HISTORY
+async function askGeminiWithHistory(prompt, history = [], maxOutputTokens = 100) {
+    // THROW ERROR IF API KEY IS NOT SET
+    if (!genAI) {
+      throw new Error('API key is not set. Use setGeminiApiKey() to set it.');
+    }
+  
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  
+    const chat = model.startChat({
+      history,
+      generationConfig: {
+        maxOutputTokens,
+      },
+    });
+  
+    const result = await chat.sendMessage(prompt);
+    return result.response.text();
+  }
 
 // EXPORTS
 module.exports = {
   setGeminiApiKey,
-  askGemini
+  askGemini,
+  askGeminiWithHistory
 };
