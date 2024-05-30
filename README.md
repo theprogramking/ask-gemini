@@ -41,9 +41,9 @@ Sets the API key for the Google Generative AI service.
 Sends a prompt to the AI and returns the response.
 
 - **Parameters:**
-  - `prompt` (string): The text prompt to send to the AI.
-  - `imageArray` (Array): An array of objects with image file path and type.
-  - `modelVersion` (string): Selects which version to use.
+  - `prompt` (string _required_): The text prompt to send to the AI.
+  - `imageArray` (Array _optional_): An array of objects with image file path and type.
+  - `modelVersion` (string _optional_): Selects which version to use.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
@@ -72,7 +72,7 @@ The `askGeminiWithHistory` function prompts the Gemini AI model with a message a
 const { setGeminiApiKey, askGeminiWithHistory } = require('ask-gemini');
 
 // Set the API key
-setGeminiApiKey('YOUR_API_KEY');
+setGeminiApiKey('YOUR_GOOGLE_API_KEY');
 
 // Define the conversation history
 const history = [
