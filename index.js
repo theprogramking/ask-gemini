@@ -1,10 +1,10 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-const fs = require('fs');
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import fs from 'fs';
 
 let genAI;
 
 // FUNCTION TO SET API KEY
-function setGeminiApiKey(apiKey) {
+export function setGeminiApiKey(apiKey) {
   genAI = new GoogleGenerativeAI(apiKey);
 }
 
@@ -20,7 +20,7 @@ function fileToGenerativePart(path, mimeType) {
 }
 
 // MAIN FUNCTION
-async function askGemini(prompt, images = [], modelTypeParam = 'gemini-1.5-flash') {
+export async function askGemini(prompt, images = [], modelTypeParam = 'gemini-1.5-flash') {
   // THROW ERROR IF API KEY IS NOT SET
   if (!genAI) {
     throw new Error('API key is not set. Use setGeminiApiKey() to set it.');
@@ -39,7 +39,7 @@ async function askGemini(prompt, images = [], modelTypeParam = 'gemini-1.5-flash
 }
 
 // FUNCTION TO HANDLE CHAT WITH HISTORY
-async function askGeminiWithHistory(prompt, history = [], maxOutputTokens = 100) {
+export async function askGeminiWithHistory(prompt, history = [], maxOutputTokens = 100) {
     // THROW ERROR IF API KEY IS NOT SET
     if (!genAI) {
       throw new Error('API key is not set. Use setGeminiApiKey() to set it.');
@@ -56,11 +56,4 @@ async function askGeminiWithHistory(prompt, history = [], maxOutputTokens = 100)
   
     const result = await chat.sendMessage(prompt);
     return result.response.text();
-  }
-
-// EXPORTS
-module.exports = {
-  setGeminiApiKey,
-  askGemini,
-  askGeminiWithHistory
-};
+}
