@@ -15,17 +15,19 @@ npm install ask-gemini
 First, you need to import the package and set your API key. Then you can use the `askGemini` function to get responses from the AI.
 
 ```javascript
-const { setGeminiApiKey, askGemini } = require('ask-gemini');
+import { setGeminiApiKey, askGemini } from 'ask-gemini';
 
 // Set your API key
 setGeminiApiKey('YOUR_GOOGLE_API_KEY');
 
 // Ask Gemini AI something
-askGemini('Generate a paragraph about the history of the United States.').then(response => {
-  console.log(response);
-}).catch(err => {
-  console.error(err);
-});
+askGemini('Generate a paragraph about the history of the United States.')
+  .then(response => {
+    console.log(response);
+  })
+  .catch(err => {
+    console.error(err);
+  });
 ```
 ### Functions
 
@@ -51,7 +53,7 @@ Sends a prompt to the AI and returns the response.
 ## Using Images 
 Below is an example if you wanted to add images/video/audio to your prompt:
 ```javascript
-const { setGeminiApiKey, askGemini } = require('ask-gemini');
+import { setGeminiApiKey, askGemini } from 'ask-gemini';
 
 setGeminiApiKey('YOUR_GOOGLE_API_KEY');
 
@@ -69,7 +71,7 @@ askGemini("Can you summarize what is in this audio and what is in this picture?"
 The `askGeminiWithHistory` function prompts the Gemini AI model with a message and a history of previous interactions, enabling multi-turn conversations.
 
 ```javascript
-const { setGeminiApiKey, askGeminiWithHistory } = require('ask-gemini');
+import { setGeminiApiKey, askGeminiWithHistory } from 'ask-gemini';
 
 // Set the API key
 setGeminiApiKey('YOUR_GOOGLE_API_KEY');
