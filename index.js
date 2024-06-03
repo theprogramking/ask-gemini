@@ -89,10 +89,7 @@ export async function askGeminiWithHistory(prompt, history = []) {
 
   try {
     const chat = model.startChat({
-      history,
-      generationConfig: {
-        maxOutputTokens,
-      },
+      history
     });
     const result = await chat.sendMessage(prompt);
     return result.response.text();

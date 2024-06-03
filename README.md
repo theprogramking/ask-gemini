@@ -12,7 +12,7 @@ A simple npm package to easily interact with Google's Generative AI (Gemini) in 
 - [Usage](#usage)
   - [Using Images](#using-images)
   - [Using Multi-Turn Conversations](#using-multi-turn-conversations)
-- [Functions](#functions)
+- [Documentation](#documentation)
 - [License](#license)
 
 ## Installation
@@ -86,7 +86,7 @@ askGeminiWithHistory('How many paws are in my house?', history)
   .then(response => console.log(response))
   .catch(error => console.error(error));
 ```
-# Functions
+# Documentation
 
 ### setGeminiApiKey(apiKey)
 
