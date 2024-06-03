@@ -1,6 +1,6 @@
 # ask-gemini
 
-A simple npm package to easily interact with Google's Generative AI (Gemini) in a Node.js project.
+A simple npm package to easily interact with Google's Generative AI (Gemini) in a Node.js project in three lines of code.
 
 ## Installation
 
@@ -73,7 +73,7 @@ askGeminiWithHistory('How many paws are in my house?', history)
   .then(response => console.log(response))
   .catch(error => console.error(error));
 ```
-### Functions
+## Functions
 
 #### setGeminiApiKey(apiKey)
 
