@@ -29,29 +29,6 @@ askGemini('Generate a paragraph about the history of the United States.')
     console.error(err);
   });
 ```
-### Functions
-
-#### setGeminiApiKey(apiKey)
-
-Sets the API key for the Google Generative AI service.
-
-- **Parameters:**
-  - `apiKey` (string _required_): Your Google Generative AI API key.
-
-#### setGeminiApiKeyFromEnv()
-
-Sets the API key for the Google Generative AI service from `process.env.GEMINI_API_KEY` variable.
-
-#### askGemini(prompt, imageArray)
-
-Sends a prompt to the AI and returns the response.
-
-- **Parameters:**
-  - `prompt` (string _required_): The text prompt to send to the AI.
-  - `imageArray` (Array _optional_): An array of objects with image file path and type.
-
-- **Returns:**
-  - A promise that resolves to the AI's response.
 
 ## Using Images 
 Below is an example if you wanted to add images/video/audio to your prompt:
@@ -96,7 +73,32 @@ askGeminiWithHistory('How many paws are in my house?', history)
   .then(response => console.log(response))
   .catch(error => console.error(error));
 ```
+### Functions
 
+#### setGeminiApiKey(apiKey)
+
+Sets the API key for the Google Generative AI service.
+
+- **Parameters:**
+  - `apiKey` (string _required_): Your Google Generative AI API key.
+
+___
+#### setGeminiApiKeyFromEnv()
+
+Sets the API key for the Google Generative AI service from `process.env.GEMINI_API_KEY` variable.
+___
+#### askGemini(prompt, imageArray)
+
+Sends a prompt to the AI and returns the response.
+
+- **Parameters:**
+  - `prompt` (string _required_): The text prompt to send to the AI.
+  - `imageArray` (Array _optional_): An array of objects with image file path and type.
+
+- **Returns:**
+  - A promise that resolves to the AI's response.
+  
+___
 #### askGeminiWithHistory(prompt, historyArray)
 
 Sends a prompt to the AI and returns the response.
@@ -107,7 +109,6 @@ Sends a prompt to the AI and returns the response.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
-
 ## License
 
 This package is licensed under the ISC License. See the LICENSE file for details.
