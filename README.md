@@ -94,11 +94,11 @@ Sets the API key for the Google Generative AI service.
 
 - **Parameters:**
   - `apiKey` (string _required_): Your Google Generative AI API key.
-
+___
 ### setGeminiApiKeyFromEnv()
 
 Sets the API key for the Google Generative AI service from `process.env.GEMINI_API_KEY` variable.
-
+___
 ### askGemini(prompt, imageArray)
 
 Sends a prompt to the AI and returns the response.
@@ -109,8 +109,7 @@ Sends a prompt to the AI and returns the response.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
-
-
+___
 ### askGeminiWithHistory(prompt, historyArray)
 
 Sends a prompt to the AI and returns the response.
@@ -121,8 +120,7 @@ Sends a prompt to the AI and returns the response.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
-
-
+___
 ### setGeminiModel(modelStringParam)
 
 This function allows the user to set the default model type for Gemini. By calling this function and passing a `modelStringParam`, the user can specify which model type should be set as the default for Gemini.
