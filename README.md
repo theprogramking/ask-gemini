@@ -1,6 +1,19 @@
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
 # ask-gemini
 
 A simple npm package to easily interact with Google's Generative AI (Gemini) in a Node.js project.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Using Images](#using-images)
+  - [Using Multi-Turn Conversations](#using-multi-turn-conversations)
+- [Functions](#functions)
+- [License](#license)
 
 ## Installation
 
@@ -73,21 +86,20 @@ askGeminiWithHistory('How many paws are in my house?', history)
   .then(response => console.log(response))
   .catch(error => console.error(error));
 ```
-## Functions
+# Functions
 
-#### setGeminiApiKey(apiKey)
+### setGeminiApiKey(apiKey)
 
 Sets the API key for the Google Generative AI service.
 
 - **Parameters:**
   - `apiKey` (string _required_): Your Google Generative AI API key.
 
-___
-#### setGeminiApiKeyFromEnv()
+### setGeminiApiKeyFromEnv()
 
 Sets the API key for the Google Generative AI service from `process.env.GEMINI_API_KEY` variable.
-___
-#### askGemini(prompt, imageArray)
+
+### askGemini(prompt, imageArray)
 
 Sends a prompt to the AI and returns the response.
 
@@ -97,9 +109,9 @@ Sends a prompt to the AI and returns the response.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
-  
-___
-#### askGeminiWithHistory(prompt, historyArray)
+
+
+### askGeminiWithHistory(prompt, historyArray)
 
 Sends a prompt to the AI and returns the response.
 
@@ -109,9 +121,12 @@ Sends a prompt to the AI and returns the response.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
-___
-#### setGeminiModel(modelStringParam)
+
+
+### setGeminiModel(modelStringParam)
+
 This function allows the user to set the default model type for Gemini. By calling this function and passing a `modelStringParam`, the user can specify which model type should be set as the default for Gemini.
+
 - **Parameters:**
   - `modelStringParam` (string, _required_): A string parameter representing the model type that the user wants to set as the default for Gemini.
 
