@@ -45,7 +45,6 @@ Sends a prompt to the AI and returns the response.
 - **Parameters:**
   - `prompt` (string _required_): The text prompt to send to the AI.
   - `imageArray` (Array _optional_): An array of objects with image file path and type.
-  - `modelVersion` (string _optional_): Selects which version to use.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
@@ -94,14 +93,13 @@ askGeminiWithHistory('How many paws are in my house?', history)
   .catch(error => console.error(error));
 ```
 
-#### askGeminiWithHistory(prompt, historyArray, outputTokens)
+#### askGeminiWithHistory(prompt, historyArray)
 
 Sends a prompt to the AI and returns the response.
 
 - **Parameters:**
   - `prompt` (string, _required_):  This is the new message you want to send to the AI. It should be a string containing your question or statement.
   - `history` (Array, _optional_): An array of previous messages in the conversation. Each entry in the array should be an object with a role and parts array. The role indicates whether the message was sent by the "user" or the "model", and parts is an array where each element has a text property containing the message text.
-  - `outputTokens` (int, _optional_): Optional parameter controls the maximum length of the AI's response in tokens. By default, it is set to 100 tokens.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
