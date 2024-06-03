@@ -1,6 +1,6 @@
 {
   "name": "ask-gemini",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "description": "Lightweight package to easily interact with Google's Generative AI (Gemini).",
   "main": "index.js",
   "type": "module",
