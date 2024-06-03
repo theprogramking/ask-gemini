@@ -1,6 +1,6 @@
 # ask-gemini
 
-A simple npm package to easily interact with Google's Generative AI (Gemini) in a Node.js project in three lines of code.
+A simple npm package to easily interact with Google's Generative AI (Gemini) in a Node.js project.
 
 ## Installation
 
@@ -109,6 +109,12 @@ Sends a prompt to the AI and returns the response.
 
 - **Returns:**
   - A promise that resolves to the AI's response.
+___
+#### setGeminiModel(modelStringParam)
+This function allows the user to set the default model type for Gemini. By calling this function and passing a `modelStringParam`, the user can specify which model type should be set as the default for Gemini.
+- **Parameters:**
+  - `modelStringParam` (string, _required_): A string parameter representing the model type that the user wants to set as the default for Gemini.
+
 ## License
 
 This package is licensed under the ISC License. See the LICENSE file for details.
