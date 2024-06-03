@@ -12,7 +12,7 @@ npm install ask-gemini
 
 ## Usage
 
-First, you need to import the package and set your API key. Then you can use the `askGemini` function to get responses from the AI.
+First, you need to import the package and set your API key. Then you can use the `askGemini` function to get responses from the AI. Visit [Google AI Studio](https://aistudio.google.com/app/apikey) to get your API key. 
 
 ```javascript
 import { setGeminiApiKey, askGemini } from 'ask-gemini';
@@ -31,14 +31,18 @@ askGemini('Generate a paragraph about the history of the United States.')
 ```
 ### Functions
 
-#### setGeminiApiKey(apiKey _required_)
+#### setGeminiApiKey(apiKey)
 
 Sets the API key for the Google Generative AI service.
 
 - **Parameters:**
-  - `apiKey` (string): Your Google Generative AI API key.
+  - `apiKey` (string _required_): Your Google Generative AI API key.
 
-#### askGemini(prompt, imageArray, modelVersion)
+#### setGeminiApiKeyFromEnv()
+
+Sets the API key for the Google Generative AI service from `process.env.GEMINI_API_KEY` variable.
+
+#### askGemini(prompt, imageArray)
 
 Sends a prompt to the AI and returns the response.
 

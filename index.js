@@ -3,10 +3,10 @@ import fs from 'fs';
 let genAI;
 const DEFAULT_MODEL_TYPE = 'gemini-1.5-flash';
 
-
 //
 // HELPER FUNCTIONS
 //
+
 /**
  * Set the GEMINI API key.
  */
@@ -29,6 +29,13 @@ export function setGeminiApiKeyFromEnv() {
 }
 
 /**
+ * Set Gemini Model type.
+ */
+export function setGeminiModel(modelStringParam){
+  DEFAULT_MODEL_TYPE = modelStringParam;
+}
+
+/**
  * Convert file to generative part.
  */
 function fileToGenerativePart(path, mimeType) {
@@ -45,6 +52,7 @@ function fileToGenerativePart(path, mimeType) {
 //
 // MAIN FUNCTIONS
 //
+
 /**
  * Ask GEMINI API with a prompt and optional images.
  */
